@@ -29,10 +29,14 @@ Mpeg1Muxer = function(options) {
     'mpegts',
     '-codec:v',
     'mpeg1video',
+    '-r', '24',
     // additional ffmpeg options go here
     ...this.additionalFlags,
     '-'
   ]
+
+  console.log(options.ffmpegPath, this.spawnOptions)
+
   this.stream = child_process.spawn(options.ffmpegPath, this.spawnOptions, {
     detached: false
   })
